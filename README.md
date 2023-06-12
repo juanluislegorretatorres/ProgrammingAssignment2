@@ -81,18 +81,18 @@ Write the following functions:
 
 <!-- -->
     makeCacheMatrix <- function(x = matrix()) {
-    inv <- NULL
-    set <- function(y) {
-    x <<- y
-    inv <<- NULL
+            inv <- NULL
+            set <- function(y) {
+                x <<- y
+                inv <<- NULL
     }
-    get <- function() x
-    setinverse <- function(inverse) inv <<- inverse
-    getinverse <- function() inv
-    list(set = set,
-    get = get,
-    setinverse = setinverse,
-    getinverse = getinverse
+        get <- function() x
+        setinverse <- function(inverse) inv <<- inverse
+        getinverse <- function() inv
+        list(set = set,
+            get = get,
+            setinverse = setinverse,
+            getinverse = getinverse
     }
 
 2.  `cacheSolve`: This function computes the inverse of the special
@@ -103,15 +103,15 @@ Write the following functions:
 <!-- -->
     
     cacheSolve <- function(x, ...) {
-    inv <- x$getinverse()
-    if (!is.null(inv)) {
-          message("datos almacenados en caché")
-          return(inv)
-          }
+            inv <- x$getinverse()
+        if (!is.null(inv)) {
+              message("datos almacenados en caché")
+              return(inv)
+             }
           data <- x$get()
           inv <- solve(data, ...)
           x$setinverse(inv)
-          inv
+            inv
           }
           m <- matrix(c(1,2,3,4),2,2)
           m1 <- makeCacheMatrix(m)
