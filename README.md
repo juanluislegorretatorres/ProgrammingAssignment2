@@ -64,6 +64,7 @@ function.
     m  <- 1:40
     m1 <- makeVector(m)
     cachemean(m1)
+    [1] 20.5
 
 ### Assignment: Caching the Inverse of a Matrix
 
@@ -79,7 +80,6 @@ Write the following functions:
     that can cache its inverse.
 
 <!-- -->
-    
     makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
     set <- function(y) {
@@ -99,6 +99,24 @@ Write the following functions:
     "matrix" returned by `makeCacheMatrix` above. If the inverse has
     already been calculated (and the matrix has not changed), then
     `cacheSolve` should retrieve the inverse from the cache.
+
+<!-- -->
+    
+    cacheSolve <- function(x, ...) {
+    inv <- x$getinverse()
+    if (!is.null(inv)) {
+          message("datos almacenados en caché")
+          return(inv)
+          }
+          data <- x$get()
+          inv <- solve(data, ...)
+          x$setinverse(inv)
+          inv
+          }
+          m <- matrix(c(1,2,3,4),2,2)
+          m1 <- makeCacheMatrix(m)
+          cacheSolve(m1) #inverse returned 
+   
 
 Computing the inverse of a square matrix can be done with the `solve`
 function in R. For example, if `X` is a square invertible matrix, then
