@@ -61,6 +61,9 @@ function.
             x$setmean(m)
             m
     }
+    m  <- 1:40
+    m1 <- makeVector(m)
+    cachemean(m1)
 
 ### Assignment: Caching the Inverse of a Matrix
 
@@ -74,6 +77,24 @@ Write the following functions:
 
 1.  `makeCacheMatrix`: This function creates a special "matrix" object
     that can cache its inverse.
+
+<!-- -->
+    
+    makeCacheMatrix <- function(x = matrix()) {
+    inv <- NULL
+    set <- function(y) {
+    x <<- y
+    inv <<- NULL
+    }
+    get <- function() x
+    setinverse <- function(inverse) inv <<- inverse
+    getinverse <- function() inv
+    list(set = set,
+    get = get,
+    setinverse = setinverse,
+    getinverse = getinverse
+    }
+
 2.  `cacheSolve`: This function computes the inverse of the special
     "matrix" returned by `makeCacheMatrix` above. If the inverse has
     already been calculated (and the matrix has not changed), then
