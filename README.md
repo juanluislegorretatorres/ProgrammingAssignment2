@@ -116,6 +116,9 @@ Write the following functions:
           m <- matrix(c(1,2,3,4),2,2)
           m1 <- makeCacheMatrix(m)
           cacheSolve(m1) #inverse returned 
+                    [,1] [,2]
+             [1,]   -2  1.5
+             [2,]    1 -0.5
    
 
 Computing the inverse of a square matrix can be done with the `solve`
